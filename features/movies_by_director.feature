@@ -32,3 +32,14 @@ Scenario: can't find similar movies if we don't know director (sad path)
   When  I follow "Find Movies With Same Director"
   Then  I should be on the home page
   And   I should see "'Alien' has no director info"
+
+Scenario: create a new movie with director info
+  Given I am on the home page
+  When  I follow "Add new movie"
+  And   I fill in "Title" with "New Director Film"
+  And   I select "PG" from "Rating"
+  And   I fill in "Director" with "New Director"
+  And   I press "Save Changes"
+  Then  I should be on the home page
+  And   I should see "New Director Film"
+  And   I should see "New Director"
